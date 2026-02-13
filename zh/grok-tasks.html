@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="我的任务列表 - Grok TaskPro">
+    <title>我的任务 | Grok TaskPro</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="/zh" class="logo-link">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="16" fill="#1DA1F2"/>
+                        <path d="M16 8v16M10 14l6-6 6 6" stroke="white" stroke-width="2" stroke-cap="round"/>
+                    </svg>
+                    <span class="logo-text">Grok TaskPro</span>
+                </div>
+            </a>
+            <button class="menu-btn" aria-label="菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <!-- Navigation -->
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="/zh/grok-tasks.html" class="nav-link active">任务管理</a></li>
+                    <li><a href="/zh#features" class="nav-link">功能介绍</a></li>
+                    <li><a href="/zh#pricing" class="nav-link">定价</a></li>
+                    <li><a href="/zh#faq" class="nav-link">常见问题</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Task List Section -->
+        <section class="task-list-section">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">我的任务</h1>
+                    <div class="header-actions">
+                        <span class="task-count">(70)</span>
+                        <a href="/zh#create-task" class="btn btn-primary"><button>+ 新建任务</button></a>
+                    </div>
+                </div>
+
+                <!-- Task Filters -->
+                <div class="task-filters">
+                    <div class="search-box">
+                        <input type="text" id="taskSearch" placeholder="搜索任务名称、描述或提示词..." />
+                    </div>
+                    <div class="filter-selects">
+                        <select id="statusFilter">
+                            <option value="">全部状态</option>
+                            <option value="active">进行中</option>
+                            <option value="paused">已暂停</option>
+                            <option value="completed">已完成</option>
+                        </select>
+                        <select id="sortFilter">
+                            <option value="created">创建时间</option>
+                            <option value="name">任务名称</option>
+                            <option value="schedule">执行时间</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-outline" id="refreshBtn">刷新任务列表</button>
+                    <button class="btn btn-outline" id="notificationBtn">通知设置</button>
+                </div>
+
+                <!-- Task Status Summary -->
+                <div class="task-status-summary">
+                    <span>游客体验: <strong>3</strong> 次</span>
+                    <span>活跃: <strong>0</strong></span>
+                    <span>暂停: <strong>70</strong></span>
+                </div>
+
+                <!-- Task List Table -->
+                <div class="task-list-table">
+                    <div class="task-table-header">
+                        <label class="task-checkbox">
+                            <input type="checkbox" id="selectAllTasks" />
+                            <span>全选</span>
+                        </label>
+                    </div>
+
+                    <div class="task-list">
+                        <div class="task-row">
+                            <div class="task-row-checkbox">
+                                <input type="checkbox" class="task-checkbox-input" />
+                            </div>
+                            <div class="task-row-content">
+                                <h3 class="task-name">OpenClaw每日玩法整理</h3>
+                                <p class="task-desc">时政热点，财经信息</p>
+                            </div>
+                            <span class="task-status paused">暂停</span>
+                            <span class="task-cron">0 8,20 * * *</span>
+                            <div class="task-actions">
+                                <button class="btn btn-execute" title="游客模式：消耗 1 次免费体验">执行</button>
+                                <button class="btn btn-edit">编辑</button>
+                                <button class="btn btn-history">历史</button>
+                                <button class="btn btn-share">分享</button>
+                                <button class="btn btn-more">⋮</button>
+                            </div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-row-checkbox">
+                                <input type="checkbox" class="task-checkbox-input" />
+                            </div>
+                            <div class="task-row-content">
+                                <h3 class="task-name">非洲每日新闻</h3>
+                                <p class="task-desc">搜索非洲每日热点新闻</p>
+                            </div>
+                            <span class="task-status paused">暂停</span>
+                            <span class="task-cron">0 9 * * *</span>
+                            <div class="task-actions">
+                                <button class="btn btn-execute" title="游客模式：消耗 1 次免费体验">执行</button>
+                                <button class="btn btn-edit">编辑</button>
+                                <button class="btn btn-history">历史</button>
+                                <button class="btn btn-share">分享</button>
+                                <button class="btn btn-more">⋮</button>
+                            </div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-row-checkbox">
+                                <input type="checkbox" class="task-checkbox-input" />
+                            </div>
+                            <div class="task-row-content">
+                                <h3 class="task-name">每天早上 9:00 获取「GitHub Trending」热门项目</h3>
+                                <p class="task-desc">分析过去 24 小时内关于「GitHub Trending」热门项目</p>
+                            </div>
+                            <span class="task-status paused">暂停</span>
+                            <span class="task-cron">0 9 * * *</span>
+                            <div class="task-actions">
+                                <button class="btn btn-execute" title="游客模式：消耗 1 次免费体验">执行</button>
+                                <button class="btn btn-edit">编辑</button>
+                                <button class="btn btn-history">历史</button>
+                                <button class="btn btn-share">分享</button>
+                                <button class="btn btn-more">⋮</button>
+                            </div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-row-checkbox">
+                                <input type="checkbox" class="task-checkbox-input" />
+                            </div>
+                            <div class="task-row-content">
+                                <h3 class="task-name">每天早上 7:00 获取「AI 行业」最新动态</h3>
+                                <p class="task-desc">主板上市公司有投资价值信息</p>
+                            </div>
+                            <span class="task-status paused">暂停</span>
+                            <span class="task-cron">0 8,20 * * *</span>
+                            <div class="task-actions">
+                                <button class="btn btn-execute" title="游客模式：消耗 1 次免费体验">执行</button>
+                                <button class="btn btn-edit">编辑</button>
+                                <button class="btn btn-history">历史</button>
+                                <button class="btn btn-share">分享</button>
+                                <button class="btn btn-more">⋮</button>
+                            </div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-row-checkbox">
+                                <input type="checkbox" class="task-checkbox-input" />
+                            </div>
+                            <div class="task-row-content">
+                                <h3 class="task-name">马斯克和特朗普的X内容更新推送</h3>
+                                <p class="task-desc">马斯克和特朗普的X内容更新推送到两个邮箱</p>
+                            </div>
+                            <span class="task-status paused">暂停</span>
+                            <span class="task-cron">0 8,20 * * *</span>
+                            <div class="task-actions">
+                                <button class="btn btn-execute" title="游客模式：消耗 1 次免费体验">执行</button>
+                                <button class="btn btn-edit">编辑</button>
+                                <button class="btn btn-history">历史</button>
+                                <button class="btn btn-share">分享</button>
+                                <button class="btn btn-more">⋮</button>
+                            </div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-row-checkbox">
+                                <input type="checkbox" class="task-checkbox-input" />
+                            </div>
+                            <div class="task-row-content">
+                                <h3 class="task-name">马斯克和特朗普的X内容更新</h3>
+                                <p class="task-desc">马斯克和特朗普的X每次更新，请将内容实时推送给我</p>
+                            </div>
+                            <span class="task-status paused">暂停</span>
+                            <span class="task-cron">0 8,20 * * *</span>
+                            <div class="task-actions">
+                                <button class="btn btn-execute" title="游客模式：消耗 1 次免费体验">执行</button>
+                                <button class="btn btn-edit">编辑</button>
+                                <button class="btn btn-history">历史</button>
+                                <button class="btn btn-share">分享</button>
+                                <button class="btn btn-more">⋮</button>
+                            </div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-row-checkbox">
+                                <input type="checkbox" class="task-checkbox-input" />
+                            </div>
+                            <div class="task-row-content">
+                                <h3 class="task-name">Musk言论</h3>
+                            </div>
+                            <span class="task-status paused">暂停</span>
+                            <span class="task-cron">0 8,20 * * *</span>
+                            <div class="task-actions">
+                                <button class="btn btn-execute" title="游客模式：消耗 1 次免费体验">执行</button>
+                                <button class="btn btn-edit">编辑</button>
+                                <button class="btn btn-history">历史</button>
+                                <button class="btn btn-share">分享</button>
+                                <button class="btn btn-more">⋮</button>
+                            </div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-row-checkbox">
+                                <input type="checkbox" class="task-checkbox-input" />
+                            </div>
+                            <div class="task-row-content">
+                                <h3 class="task-name">马斯克时时动态</h3>
+                            </div>
+                            <span class="task-status paused">暂停</span>
+                            <span class="task-cron">0 9,15,21 * * *</span>
+                            <div class="task-actions">
+                                <button class="btn btn-execute" title="游客模式：消耗 1 次免费体验">执行</button>
+                                <button class="btn btn-edit">编辑</button>
+                                <button class="btn btn-history">历史</button>
+                                <button class="btn btn-share">分享</button>
+                                <button class="btn btn-more">⋮</button>
+                            </div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-row-checkbox">
+                                <input type="checkbox" class="task-checkbox-input" />
+                            </div>
+                            <div class="task-row-content">
+                                <h3 class="task-name">每日创新创业管理最新研究热门论文汇总</h3>
+                            </div>
+                            <span class="task-status paused">暂停</span>
+                            <span class="task-cron">0 9 * * *</span>
+                            <div class="task-actions">
+                                <button class="btn btn-execute" title="游客模式：消耗 1 次免费体验">执行</button>
+                                <button class="btn btn-edit">编辑</button>
+                                <button class="btn btn-history">历史</button>
+                                <button class="btn btn-share">分享</button>
+                                <button class="btn btn-more">⋮</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination Controls -->
+                <div class="pagination-controls">
+                    <div class="items-per-page">
+                        <span>每页显示</span>
+                        <select id="itemsPerPage">
+                            <option value="6">6 条</option>
+                            <option value="9" selected>9 条</option>
+                            <option value="12">12 条</option>
+                            <option value="18">18 条</option>
+                            <option value="24">24 条</option>
+                            <option value="50">50 条</option>
+                        </select>
+                        <span>共 <strong>70</strong> 条</span>
+                    </div>
+                    <div class="pagination-buttons">
+                        <button class="page-btn" id="prevPage" disabled>上一页</button>
+                        <span class="page-info">第 <strong>1</strong> / <strong>8</strong> 页</span>
+                        <button class="page-btn" id="nextPage">下一页</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="16" fill="#1DA1F2"/>
+                        <path d="M16 8v16M10 14l6-6 6 6" stroke="white" stroke-width="2" stroke-cap="round"/>
+                    </svg>
+                    <span>Grok TaskPro</span>
+                    <p>专业的 AI 任务管理平台，使用最先进的 AI 技术，实现任务自动化和智能分析。</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-links-group">
+                        <h4 class="footer-links-title">产品</h4>
+                        <ul class="footer-links-list">
+                            <li><a href="/zh/grok-tasks.html">任务管理</a></li>
+                            <li><a href="/zh/showcase.html">任务展示</a></li>
+                            <li><a href="/zh#pricing">定价</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-links-group">
+                        <h4 class="footer-links-title">资源</h4>
+                        <ul class="footer-links-list">
+                            <li><a href="/zh/docs.html">文档</a></li>
+                            <li><a href="/zh/posts.html">博客</a></li>
+                            <li><a href="/zh/api-docs.html">API</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-links-group">
+                        <h4 class="footer-links-title">支持</h4>
+                        <ul class="footer-links-list">
+                            <li><a href="/zh/help.html">帮助中心</a></li>
+                            <li><a href="/zh/contact.html">联系我们</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 • Grok TaskPro 保留所有权利。</p>
+                <div class="footer-bottom-links">
+                    <a href="https://trygrokai.asia/privacy-policy">隐私政策</a>
+                    <span>|</span>
+                    <a href="https://trygrokai.asia/terms-of-service">服务条款</a>
+                    <span>|</span>
+                    <a href="https://trygrokai.asia/">🌐 官网：trygrokai.asia</a>
+                    <span>|</span>
+                    <a href="https://github.com/xianyu110/grok-task" target="_blank">GitHub</a>
+                    <span>|</span>
+                    <a href="https://x.com/Nikitka_aktikiN" target="_blank">Twitter</a>
+                    <span>|</span>
+                    <a href="https://link3.cc/maynorai" target="_blank">@maynorai</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

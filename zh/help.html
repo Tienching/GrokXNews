@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="帮助中心 - Grok TaskPro">
+    <title>帮助中心 | Grok TaskPro</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .help-hero {
+            background-color: var(--bg-secondary);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .help-search-container {
+            max-width: 600px;
+            margin: 32px auto 0;
+            position: relative;
+        }
+
+        .help-search-input {
+            width: 100%;
+            padding: 16px 24px;
+            padding-left: 50px;
+            font-size: 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            box-shadow: var(--shadow-sm);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .help-search-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .help-categories {
+            padding: 60px 0;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .category-card {
+            padding: 32px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            transition: all 0.2s;
+            text-align: left;
+            background-color: var(--bg-primary);
+        }
+
+        .category-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .category-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .category-title {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .category-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .article-list {
+            list-style: none;
+        }
+
+        .article-list li {
+            margin-bottom: 12px;
+        }
+
+        .article-link {
+            color: var(--primary-color);
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .article-link:hover {
+            text-decoration: underline;
+        }
+
+        .faq-section {
+            padding: 60px 0;
+            background-color: var(--bg-secondary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="/zh" class="logo-link">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="16" fill="#1DA1F2"/>
+                        <path d="M16 8v16M10 14l6-6 6 6" stroke="white" stroke-width="2" stroke-cap="round"/>
+                    </svg>
+                    <span class="logo-text">Grok TaskPro</span>
+                </div>
+            </a>
+            <button class="menu-btn" aria-label="菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="/zh/grok-tasks.html" class="nav-link">任务管理</a></li>
+                    <li><a href="/zh/showcase.html" class="nav-link">任务展示</a></li>
+                    <li><a href="/zh/pricing.html" class="nav-link">定价</a></li>
+                    <li><a href="/zh/help.html" class="nav-link active">帮助中心</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Search -->
+        <section class="help-hero">
+            <div class="container">
+                <h1 class="hero-title">我们能为您做些什么？</h1>
+                <p class="hero-subtitle">搜索问题关键字，或浏览下方的帮助主题</p>
+
+                <div class="help-search-container">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" class="help-search-input" placeholder="例如：如何创建 Cron 任务？">
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section class="help-categories">
+            <div class="container">
+                <div class="categories-grid">
+                    <div class="category-card">
+                        <span class="category-icon">🚀</span>
+                        <h3 class="category-title">快速入门</h3>
+                        <p class="category-desc">了解基本概念，创建您的第一个任务。</p>
+                        <ul class="article-list">
+                            <li><a href="#" class="article-link">什么是 Grok TaskPro？</a></li>
+                            <li><a href="#" class="article-link">如何注册账号</a></li>
+                            <li><a href="#" class="article-link">创建第一个自动化任务</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="category-card">
+                        <span class="category-icon">⚙️</span>
+                        <h3 class="category-title">任务管理</h3>
+                        <p class="category-desc">提示词编写、调度设置和高级选项。</p>
+                        <ul class="article-list">
+                            <li><a href="#" class="article-link">如何使用 Cron 表达式</a></li>
+                            <li><a href="#" class="article-link">优化提示词 (Prompt) 技巧</a></li>
+                            <li><a href="#" class="article-link">查看和导出任务结果</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="category-card">
+                        <span class="category-icon">💳</span>
+                        <h3 class="category-title">计费与订阅</h3>
+                        <p class="category-desc">积分管理、支付方式和退款政策。</p>
+                        <ul class="article-list">
+                            <li><a href="#" class="article-link">积分是如何消耗的？</a></li>
+                            <li><a href="#" class="article-link">升级订阅套餐</a></li>
+                            <li><a href="#" class="article-link">发票与收据</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="category-card">
+                        <span class="category-icon">🔧</span>
+                        <h3 class="category-title">故障排除</h3>
+                        <p class="category-desc">常见问题解决方案和技术支持。</p>
+                        <ul class="article-list">
+                            <li><a href="#" class="article-link">任务执行失败怎么办？</a></li>
+                            <li><a href="#" class="article-link">收不到邮件通知</a></li>
+                            <li><a href="#" class="article-link">报告 Bug</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="section-title">常见问题</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>免费版有什么限制？</span>
+                            <svg class="faq-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="m6 9 6 6 6-6"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>免费版用户每天可以执行 3 次任务，使用所有标准模板。如果需要更多执行次数或高级功能（如邮件推送），建议购买积分包。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>如何联系人工客服？</span>
+                            <svg class="faq-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="m6 9 6 6 6-6"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>您可以通过页面底部的“联系我们”链接发送邮件，或者加入我们的 Discord 社区获取实时帮助。专业版用户享有邮件优先支持服务。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="16" fill="#1DA1F2"/>
+                        <path d="M16 8v16M10 14l6-6 6 6" stroke="white" stroke-width="2" stroke-cap="round"/>
+                    </svg>
+                    <span>Grok TaskPro</span>
+                    <p>专业的 AI 任务管理平台，使用最先进的 AI 技术，实现任务自动化和智能分析。</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-links-group">
+                        <h4 class="footer-links-title">产品</h4>
+                        <ul class="footer-links-list">
+                            <li><a href="/zh/grok-tasks.html">任务管理</a></li>
+                            <li><a href="/zh/showcase.html">任务展示</a></li>
+                            <li><a href="/zh/pricing.html">定价</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-links-group">
+                        <h4 class="footer-links-title">资源</h4>
+                        <ul class="footer-links-list">
+                            <li><a href="/zh/docs.html">文档</a></li>
+                            <li><a href="/zh/posts.html">博客</a></li>
+                            <li><a href="/zh/api-docs.html">API</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-links-group">
+                        <h4 class="footer-links-title">支持</h4>
+                        <ul class="footer-links-list">
+                            <li><a href="/zh/help.html">帮助中心</a></li>
+                            <li><a href="/zh/contact.html">联系我们</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 • Grok TaskPro 保留所有权利。</p>
+                <div class="footer-bottom-links">
+                    <a href="https://trygrokai.asia/privacy-policy">隐私政策</a>
+                    <span>|</span>
+                    <a href="https://trygrokai.asia/terms-of-service">服务条款</a>
+                    <span>|</span>
+                    <a href="https://trygrokai.asia/">🌐 官网：trygrokai.asia</a>
+                    <span>|</span>
+                    <a href="https://github.com/xianyu110/grok-task" target="_blank">GitHub</a>
+                    <span>|</span>
+                    <a href="https://x.com/Nikitka_aktikiN" target="_blank">Twitter</a>
+                    <span>|</span>
+                    <a href="https://link3.cc/maynorai" target="_blank">@maynorai</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

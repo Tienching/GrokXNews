@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="使用文档 - Grok TaskPro">
+    <title>使用文档 | Grok TaskPro</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .docs-section {
+            padding: 60px 0;
+            background-color: var(--bg-primary);
+            min-height: 80vh;
+        }
+
+        .docs-container {
+            display: flex;
+            gap: 40px;
+        }
+
+        .docs-sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 100px;
+            height: calc(100vh - 140px);
+            overflow-y: auto;
+            border-right: 1px solid var(--border-light);
+            padding-right: 20px;
+        }
+
+        .docs-menu-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .docs-menu {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .docs-menu li {
+            margin-bottom: 8px;
+        }
+
+        .docs-menu a {
+            color: var(--text-secondary);
+            font-size: 14px;
+            display: block;
+            padding: 6px 0;
+            transition: color 0.2s;
+        }
+
+        .docs-menu a:hover,
+        .docs-menu a.active {
+            color: var(--primary-color);
+        }
+
+        .docs-content {
+            flex: 1;
+            max-width: 800px;
+        }
+
+        .docs-article h1 {
+            font-size: 32px;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+
+        .docs-article h2 {
+            font-size: 24px;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 12px;
+        }
+
+        .docs-article h3 {
+            font-size: 18px;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .docs-article p {
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .docs-article ul {
+            margin-bottom: 16px;
+            padding-left: 20px;
+            color: var(--text-secondary);
+        }
+
+        .docs-article li {
+            margin-bottom: 8px;
+        }
+
+        .docs-article code {
+            background-color: var(--bg-secondary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+            color: var(--primary-color);
+        }
+
+        .docs-article pre {
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 20px;
+            border-radius: var(--radius-md);
+            overflow-x: auto;
+            margin-bottom: 24px;
+        }
+
+        .docs-article pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+        }
+
+        .doc-note {
+            background-color: var(--primary-light);
+            border-left: 4px solid var(--primary-color);
+            padding: 16px;
+            margin-bottom: 24px;
+            border-radius: 4px;
+        }
+
+        .doc-note p {
+            margin-bottom: 0;
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 768px) {
+            .docs-container {
+                flex-direction: column;
+            }
+
+            .docs-sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                top: 0;
+                border-right: none;
+                border-bottom: 1px solid var(--border-light);
+                padding-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="/zh" class="logo-link">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="16" fill="#1DA1F2"/>
+                        <path d="M16 8v16M10 14l6-6 6 6" stroke="white" stroke-width="2" stroke-cap="round"/>
+                    </svg>
+                    <span class="logo-text">Grok TaskPro</span>
+                </div>
+            </a>
+            <button class="menu-btn" aria-label="菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="/zh/grok-tasks.html" class="nav-link">任务管理</a></li>
+                    <li><a href="/zh/showcase.html" class="nav-link">任务展示</a></li>
+                    <li><a href="/zh/pricing.html" class="nav-link">定价</a></li>
+                    <li><a href="/zh/posts.html" class="nav-link">博客</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="docs-section">
+            <div class="container docs-container">
+                <aside class="docs-sidebar">
+                    <div class="docs-menu-group">
+                        <h4 class="docs-menu-title">入门指南</h4>
+                        <ul class="docs-menu">
+                            <li><a href="#" class="active">产品介绍</a></li>
+                            <li><a href="#">快速开始</a></li>
+                            <li><a href="#">账号管理</a></li>
+                        </ul>
+                    </div>
+                    <div class="docs-menu-group">
+                        <h4 class="docs-menu-title">任务管理</h4>
+                        <ul class="docs-menu">
+                            <li><a href="#">创建任务</a></li>
+                            <li><a href="#">任务调度 (Cron)</a></li>
+                            <li><a href="#">提示词技巧</a></li>
+                            <li><a href="#">查看结果</a></li>
+                        </ul>
+                    </div>
+                    <div class="docs-menu-group">
+                        <h4 class="docs-menu-title">高级功能</h4>
+                        <ul class="docs-menu">
+                            <li><a href="#">X 平台整合</a></li>
+                            <li><a href="#">API 使用</a></li>
+                            <li><a href="#">Webhook 集成</a></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <div class="docs-content">
+                    <article class="docs-article">
+                        <h1>Grok TaskPro 产品介绍</h1>
+                        <p>欢迎使用 <strong>Grok TaskPro</strong> —— 您的智能 AI 任务自动化平台。我们致力于将 AI 从被动的对话工具转变为主动的生产力代理。</p>
+
+                        <div class="doc-note">
+                            <p>💡 <strong>核心理念：</strong> 让信息主动找到你，而不是你去找信息。</p>
+                        </div>
+
+                        <h2>什么是 Grok TaskPro？</h2>
+                        <p>Grok TaskPro 是一个基于先进大语言模型的任务自动化平台。它允许用户设定特定的任务指令（Prompt）和执行计划（Schedule），系统会按照设定的时间自动运行任务，并将结果推送到用户的邮箱或应用内。</p>
+
+                        <h3>主要应用场景</h3>
+                        <ul>
+                            <li><strong>舆情监控：</strong> 每天定时追踪特定品牌或话题在社交媒体上的讨论热度。</li>
+                            <li><strong>行业日报：</strong> 自动搜集并总结特定行业的最新新闻和动态。</li>
+                            <li><strong>竞品分析：</strong> 定期检查竞争对手的产品更新和市场活动。</li>
+                            <li><strong>数据追踪：</strong> 监控 GitHub 热门项目、股市波动或加密货币趋势。</li>
+                        </ul>
+
+                        <h2>核心功能</h2>
+
+                        <h3>1. 智能任务调度</h3>
+                        <p>支持灵活的时间设置，您可以选择每天、每周、每月或使用 Cron 表达式进行精确控制。</p>
+                        <pre><code># 示例 Cron 表达式
+0 9 * * *       # 每天早上 9 点
+0 9 * * 1       # 每周一早上 9 点
+*/30 * * * *    # 每 30 分钟一次</code></pre>
+
+                        <h3>2. 多渠道推送</h3>
+                        <p>不再需要反复登录网站查看结果。我们支持：</p>
+                        <ul>
+                            <li><strong>邮件推送：</strong> 格式精美的 HTML 邮件，直接阅读报告。</li>
+                            <li><strong>应用通知：</strong> 网页端实时提醒。</li>
+                            <li><strong>Webhook：</strong> (企业版) 将结果推送到 Slack、Discord 或飞书。</li>
+                        </ul>
+
+                        <h3>3. X (Twitter) 深度整合</h3>
+                        <p>利用 Grok 的原生优势，我们可以实时访问 X 平台的最新数据，为您提供最及时、最真实的社交媒体洞察。</p>
+
+                        <h2>下一步</h2>
+                        <p>准备好开始了吗？请查看 <a href="#">快速开始</a> 指南，在 3 分钟内创建您的第一个自动化任务。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="16" fill="#1DA1F2"/>
+                        <path d="M16 8v16M10 14l6-6 6 6" stroke="white" stroke-width="2" stroke-cap="round"/>
+                    </svg>
+                    <span>Grok TaskPro</span>
+                    <p>专业的 AI 任务管理平台，使用最先进的 AI 技术，实现任务自动化和智能分析。</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-links-group">
+                        <h4 class="footer-links-title">产品</h4>
+                        <ul class="footer-links-list">
+                            <li><a href="/zh/grok-tasks.html">任务管理</a></li>
+                            <li><a href="/zh/showcase.html">任务展示</a></li>
+                            <li><a href="/zh/pricing.html">定价</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-links-group">
+                        <h4 class="footer-links-title">资源</h4>
+                        <ul class="footer-links-list">
+                            <li><a href="/zh/docs.html">文档</a></li>
+                            <li><a href="/zh/posts.html">博客</a></li>
+                            <li><a href="/zh/api-docs.html">API</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-links-group">
+                        <h4 class="footer-links-title">支持</h4>
+                        <ul class="footer-links-list">
+                            <li><a href="/zh/help.html">帮助中心</a></li>
+                            <li><a href="/zh/contact.html">联系我们</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 • Grok TaskPro 保留所有权利。</p>
+                <div class="footer-bottom-links">
+                    <a href="https://trygrokai.asia/privacy-policy">隐私政策</a>
+                    <span>|</span>
+                    <a href="https://trygrokai.asia/terms-of-service">服务条款</a>
+                    <span>|</span>
+                    <a href="https://trygrokai.asia/">🌐 官网：trygrokai.asia</a>
+                    <span>|</span>
+                    <a href="https://github.com/xianyu110/grok-task" target="_blank">GitHub</a>
+                    <span>|</span>
+                    <a href="https://x.com/Nikitka_aktikiN" target="_blank">Twitter</a>
+                    <span>|</span>
+                    <a href="https://link3.cc/maynorai" target="_blank">@maynorai</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GrokTask - AI 驱动的智能任务自动化平台">
+    <title>GrokTask - AI 驱动的智能任务自动化平台 | Grok TaskPro</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="/" class="logo-link">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="16" fill="#1DA1F2"/>
+                        <path d="M16 8v16M10 14l6-6 6 6" stroke="white" stroke-width="2" stroke-cap="round"/>
+                    </svg>
+                    <span class="logo-text">Grok TaskPro</span>
+                </div>
+            </a>
+            <button class="menu-btn" aria-label="菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <!-- Navigation -->
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="/zh/grok-tasks.html" class="nav-link">任务管理</a></li>
+                    <li><a href="#features" class="nav-link">功能介绍</a></li>
+                    <li><a href="/zh/pricing.html" class="nav-link">定价</a></li>
+                    <li><a href="#faq" class="nav-link">常见问题</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-container">
+                <h1 class="hero-title">Grok TaskPro</h1>
+                <p class="hero-subtitle">
+                    让 AI 自动帮你追踪热点，一觉醒来，所有资讯已整理完毕。
+                    从「你问我答」到「主动汇报」，让信息主动找到你。
+                </p>
+                <div class="hero-buttons">
+                    <a href="/zh/grok-tasks.html" class="btn btn-primary-link"><button>开始使用</button></a>
+                    <a href="/zh/showcase.html" class="btn btn-outline-link"><button>查看展示</button></a>
+                </div>
+
+                <!-- Guest Notice Banner -->
+                <div class="guest-notice">
+                    <span class="guest-notice-text">游客模式：剩余<span class="remaining-count">3</span> 次免费体验。</span>
+                    <a href="/zh/signin.html" class="guest-notice-link">登录获取更多次数 →</a>
+                </div>
+
+                <!-- Feature Cards -->
+                <div class="hero-features">
+                    <div class="feature-card">
+                        <div class="feature-icon">⏰</div>
+                        <h3 class="feature-title">定时自动执行</h3>
+                        <p class="feature-desc">每日、每周、每月自动运行任务，真正实现「设置后就忘掉」的自动化体验</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📧</div>
+                        <h3 class="feature-title">结果主动推送</h3>
+                        <p class="feature-desc">邮件通知 + 应用内提醒，结果直接找到你，无需主动查看</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <h3 class="feature-title">实时数据追踪</h3>
+                        <p class="feature-desc">深度整合 X 平台，追踪热点话题、监控舆情、识别新兴趋势</p>
+                    </div>
+                </div>
+
+                <!-- Task Creation Form -->
+                <div class="task-form-section" id="create-task">
+                    <h3 class="section-title">快速创建任务</h3>
+                    <p class="section-desc">游客模式：免费体验 3 次 AI 任务</p>
+
+                    <form class="task-form" id="taskForm">
+                        <div class="form-group">
+                            <label for="taskName">任务名称 <span class="required">*</span></label>
+                            <input type="text" id="taskName" placeholder="例如：每日科技新闻汇总" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="schedule">执行频率</label>
+                            <div class="select-wrapper">
+                                <select id="schedule">
+                                    <option value="9:00">⏰ 每天早上 9:00</option>
+                                    <option value="12:00">🌞 每天中午 12:00</option>
+                                    <option value="18:00">🌙 每天晚上 18:00</option>
+                                    <option value="8:00,20:00">📅 每天 8:00 和 20:00</option>
+                                    <option value="6:00">🔄 每 6 小时</option>
+                                    <option value="12:00">🔄 每 12 小时</option>
+                                    <option value="weekday">💼 每工作日 9:00</option>
+                                    <option value="monday">📆 每周一 9:00</option>
+                                    <option value="custom">✏️ 自定义时间</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="taskDesc">任务描述</label>
+                            <input type="text" id="taskDesc" placeholder="简短描述这个任务的用途">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="taskPrompt">任务提示词 (Prompt) <span class="required">*</span></label>
+                            <div class="prompt-wrapper">
+                                <textarea id="taskPrompt" rows="4" placeholder="输入详细的任务指令，告诉 AI 要做什么..." required></textarea>
+                                <button type="button" class="btn-optimize" id="btnOptimize" disabled>AI 优化</button>
+                            </div>
+                            <p class="form-hint">💡 提示：写得越详细，AI 的输出质量越高。点击「AI 优化」让 Grok 帮你改进提示词。</p>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" id="btnCreate" disabled>创建任务</button>
+                        </div>
+
+                        <div class="form-bottom-actions">
+                            <button type="button" class="btn btn-outline">使用模板</button>
+                            <button type="button" class="btn btn-outline">高级选项</button>
+                        </div>
+                    </form>
+
+                    <!-- Loading indicator -->
+                    <div class="loading-indicator" id="loadingIndicator" style="display: none;">
+                        加载任务中...
+                    </div>
+                </div>
+
+                <!-- Task List Preview Section -->
+                <div class="task-list-preview-section">
+                    <div class="task-filters">
+                        <div class="search-box">
+                            <input type="text" id="taskSearch" placeholder="搜索任务名称、描述或提示词..." />
+                        </div>
+                        <div class="filter-selects">
+                            <select id="statusFilter">
+                                <option value="">全部状态</option>
+                                <option value="active">进行中</option>
+                                <option value="paused">已暂停</option>
+                                <option value="completed">已完成</option>
+                            </select>
+                            <select id="sortFilter">
+                                <option value="created">创建时间</option>
+                                <option value="name">任务名称</option>
+                                <option value="schedule">执行时间</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-outline" id="refreshBtn">刷新任务列表</button>
+                        <button class="btn btn-outline" id="notificationBtn">通知设置</button>
+                    </div>
+
+                    <!-- Task List Heading -->
+                    <h2 class="section-title">我的任务 (70)</h2>
+
+                    <!-- Task List Table -->
+                    <div class="task-list-table">
+                        <div class="task-table-header">
+                            <label class="task-checkbox">
+                                <input type="checkbox" id="selectAllTasks" />
+                                <span>全选</span>
+                            </label>
+                        </div>
+
+                        <!-- Task Status Summary -->
+                        <div class="task-status-summary">
+                            <span>游客体验: <strong>3</strong> 次</span>
+                            <span>活跃: <strong>0</strong></span>
+                            <span>暂停: <strong>70</strong></span>
+                        </div>
+
+                        <div class="task-list">
+                            <div class="task-row">
+                                <div class="task-row-checkbox">
+                                    <input type="checkbox" class="task-checkbox-input" />
+                                </div>
+                                <div class="task-row-content">
+                                    <h3 class="task-name">OpenClaw每日玩法整理</h3>
+                                    <p class="task-desc">时政热点，财经信息</p>
+                                </div>
+                                <span class="task-status paused">暂停</span>
+                                <span class="task-cron">0 8,20 * * *</span>
+                                <div class="task-actions">
+                                    <button class="btn btn-execute" title="游客模式：消耗 1 次免费体验">执行</button>
+                                    <button class="btn btn-edit">编辑</button>
+                                    <button class="btn btn-history">历史</button>
+                                    <button class="btn btn-share">分享</button>
+                                    <button class="btn btn-more">⋮</button>
+                                </div>
+                            </div>
+
+                            <div class="task-row">
+                                <div class="task-row-checkbox">
+                                    <input type="checkbox" class="task-checkbox-input" />
+                                </div>
+                                <div class="task-row-content">
+                                    <h3 class="task-name">非洲每日新闻</h3>
+                                    <p class="task-desc">搜索非洲每日热点新闻</p>
+                                </div>
+                                <span class="task-status paused">暂停</span>
+                                <span class="task-cron">0 9 * * *</span>
+                                <div class="task-actions">
+                                    <button class="btn btn-execute" title="游客模式：消耗 1 次免费体验">执行</button>
+                                    <button class="btn btn-edit">编辑</button>
+                                    <button class="btn btn-history">历史</button>
+                                    <button class="btn btn-share">分享</button>
+                                    <button class="btn btn-more">⋮</button>
+                                </div>
+                            </div>
+
+                            <div class="task-row">
+                                <div class="task-row-checkbox">
+                                    <input type="checkbox" class="task-checkbox-input" />
+                                </div>
+                                <div class="task-row-content">
+                                    <h3 class="task-name">每天早上 9:00 获取「GitHub Trending」热门项目</h3>
+                                    <p class="task-desc">分析过去 24 小时内关于「GitHub Trending」热门项目</p>
+                                </div>
+                                <span class="task-status paused">暂停</span>
+                                <span class="task-cron">0 9 * * *</span>
+                                <div class="task-actions">
+                                    <button class="btn btn-execute" title="游客模式：消耗 1 次免费体验">执行</button>
+                                    <button class="btn btn-edit">编辑</button>
+                                    <button class="btn btn-history">历史</button>
+                                    <button class="btn btn-share">分享</button>
+                                    <button class="btn btn-more">⋮</button>
+                                </div>
+                            </div>
+
+                            <div class="task-row">
+                                <div class="task-row-checkbox">
+                                    <input type="checkbox" class="task-checkbox-input" />
+                                </div>
+                                <div class="task-row-content">
+                                    <h3 class="task-name">每天早上 7:00 获取「AI 行业」最新动态</h3>
+                                    <p class="task-desc">主板上市公司有投资价值信息</p>
+                                </div>
+                                <span class="task-status paused">暂停</span>
+                                <span class="task-cron">0 8,20 * * *</span>
+                                <div class="task-actions">
+                                    <button class="btn btn-execute" title="游客模式：消耗 1 次免费体验">执行</button>
+                                    <button class="btn btn-edit">编辑</button>
+                                    <button class="btn btn-history">历史</button>
+                                    <button class="btn btn-share">分享</button>
+                                    <button class="btn btn-more">⋮</button>
+                                </div>
+                            </div>
+
+                            <div class="task-row">
+                                <div class="task-row-checkbox">
+                                    <input type="checkbox" class="task-checkbox-input" />
+                                </div>
+                                <div class="task-row-content">
+                                    <h3 class="task-name">马斯克和特朗普的X内容更新推送</h3>
+                                    <p class="task-desc">马斯克和特朗普的X内容更新推送到两个邮箱</p>
+                                </div>
+                                <span class="task-status paused">暂停</span>
+                                <span class="task-cron">0 8,20 * * *</span>
+                                <div class="task-actions">
+                                    <button class="btn btn-execute" title="游客模式：消耗 1 次免费体验">执行</button>
+                                    <button class="btn btn-edit">编辑</button>
+                                    <button class="btn btn-history">历史</button>
+                                    <button class="btn btn-share">分享</button>
+                                    <button class="btn btn-more">⋮</button>
+                                </div>
+                            </div>
+
+                            <div class="task-row">
+                                <div class="task-row-checkbox">
+                                    <input type="checkbox" class="task-checkbox-input" />
+                                </div>
+                                <div class="task-row-content">
+                                    <h3 class="task-name">马斯克和特朗普的X内容更新</h3>
+                                    <p class="task-desc">马斯克和特朗普的X每次更新，请将内容实时推送给我</p>
+                                </div>
+                                <span class="task-status paused">暂停</span>
+                                <span class="task-cron">0 8,20 * * *</span>
+                                <div class="task-actions">
+                                    <button class="btn btn-execute" title="游客模式：消耗 1 次免费体验">执行</button>
+                                    <button class="btn btn-edit">编辑</button>
+                                    <button class="btn btn-history">历史</button>
+                                    <button class="btn btn-share">分享</button>
+                                    <button class="btn btn-more">⋮</button>
+                                </div>
+                            </div>
+
+                            <div class="task-row">
+                                <div class="task-row-checkbox">
+                                    <input type="checkbox" class="task-checkbox-input" />
+                                </div>
+                                <div class="task-row-content">
+                                    <h3 class="task-name">Musk言论</h3>
+                                </div>
+                                <span class="task-status paused">暂停</span>
+                                <span class="task-cron">0 8,20 * * *</span>
+                                <div class="task-actions">
+                                    <button class="btn btn-execute" title="游客模式：消耗 1 次免费体验">执行</button>
+                                    <button class="btn btn-edit">编辑</button>
+                                    <button class="btn btn-history">历史</button>
+                                    <button class="btn btn-share">分享</button>
+                                    <button class="btn btn-more">⋮</button>
+                                </div>
+                            </div>
+
+                            <div class="task-row">
+                                <div class="task-row-checkbox">
+                                    <input type="checkbox" class="task-checkbox-input" />
+                                </div>
+                                <div class="task-row-content">
+                                    <h3 class="task-name">马斯克时时动态</h3>
+                                </div>
+                                <span class="task-status paused">暂停</span>
+                                <span class="task-cron">0 9,15,21 * * *</span>
+                                <div class="task-actions">
+                                    <button class="btn btn-execute" title="游客模式：消耗 1 次免费体验">执行</button>
+                                    <button class="btn btn-edit">编辑</button>
+                                    <button class="btn btn-history">历史</button>
+                                    <button class="btn btn-share">分享</button>
+                                    <button class="btn btn-more">⋮</button>
+                                </div>
+                            </div>
+
+                            <div class="task-row">
+                                <div class="task-row-checkbox">
+                                    <input type="checkbox" class="task-checkbox-input" />
+                                </div>
+                                <div class="task-row-content">
+                                    <h3 class="task-name">每日创新创业管理最新研究热门论文汇总</h3>
+                                </div>
+                                <span class="task-status paused">暂停</span>
+                                <span class="task-cron">0 9 * * *</span>
+                                <div class="task-actions">
+                                    <button class="btn btn-execute" title="游客模式：消耗 1 次免费体验">执行</button>
+                                    <button class="btn btn-edit">编辑</button>
+                                    <button class="btn btn-history">历史</button>
+                                    <button class="btn btn-share">分享</button>
+                                    <button class="btn btn-more">⋮</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination Controls -->
+                    <div class="pagination-controls">
+                        <div class="items-per-page">
+                            <span>每页显示</span>
+                            <select id="itemsPerPage">
+                                <option value="6">6 条</option>
+                                <option value="9" selected>9 条</option>
+                                <option value="12">12 条</option>
+                                <option value="18">18 条</option>
+                                <option value="24">24 条</option>
+                                <option value="50">50 条</option>
+                            </select>
+                            <span>共 <strong>70</strong> 条</span>
+                        </div>
+                        <div class="pagination-buttons">
+                            <button class="page-btn" id="prevPage" disabled>上一页</button>
+                            <span class="page-info">第 <strong>1</strong> / <strong>8</strong> 页</span>
+                            <button class="page-btn" id="nextPage">下一页</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Features Section -->
+        <section class="features-section" id="features">
+            <div class="container">
+                <h2 class="section-title">Grok TaskPro 核心功能</h2>
+                <p class="section-desc">从「对话工具」到「自动化代理」，让 AI 主动为你工作</p>
+
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-large-icon">⏰</div>
+                        <h3 class="feature-item-title">灵活的时间调度</h3>
+                        <p class="feature-item-desc">单次、每日、每周、每月执行，支持 Cron 表达式自定义。每天早上 8 点收到热门话题分析，每周一获取行业动态汇总，每月底自动整理技术趋势报告</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-large-icon">📧</div>
+                        <h3 class="feature-item-title">外部通知机制</h3>
+                        <p class="feature-item-desc">区别于竞品的最大亮点！结果直接发送到邮箱，无需打开应用查看。支持邮件推送、应用内通知、双渠道同时推送，真正实现「设置后就忘掉」的自动化体验</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-large-icon">🔥</div>
+                        <h3 class="feature-item-title">X 平台深度整合</h3>
+                        <p class="feature-item-desc">天然具有 X（原 Twitter）平台的实时数据优势。追踪特定话题标签、监控关键用户发言、分析舆情走向、识别新兴趋势和热点事件</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-large-icon">🎯</div>
+                        <h3 class="feature-item-title">智能任务模板</h3>
+                        <p class="feature-item-desc">提供丰富的任务模板，涵盖内容创作、市场营销、研究分析、投资追踪等场景。一键创建，立即使用，快速上手</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-large-icon">📊</div>
+                        <h3 class="feature-item-title">完整执行历史</h3>
+                        <p class="feature-item-desc">所有任务执行记录和 AI 生成内容永久保存。支持按时间筛选、关键词搜索、数据导出，方便回顾和分析</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-large-icon">⚡</div>
+                        <h3 class="feature-item-title">高级分析能力</h3>
+                        <p class="feature-item-desc">支持资源密集型的深度分析任务。单任务最长运行 3 分钟，提供更详细的数据洞察和趋势判断</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing-section" id="pricing">
+            <div class="container">
+                <h2 class="section-title">🎯 简单透明的定价</h2>
+                <p class="section-desc">选择适合您的套餐，随时可以取消</p>
+
+                <div class="pricing-grid">
+                    <!-- Free Plan -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 class="pricing-title">免费版</h3>
+                            <div class="pricing-price">¥0</div>
+                            <div class="pricing-period">永久免费</div>
+                        </div>
+                        <div class="pricing-features">
+                            <p class="pricing-highlight">体验核心功能</p>
+                            <p class="pricing-note">适合轻度体验用户</p>
+                            <ul class="feature-list">
+                                <li class="feature-item-check">每天 3 次任务执行</li>
+                                <li class="feature-item-check">每天 3 次 AI 问答</li>
+                                <li class="feature-item-check">所有任务模板</li>
+                                <li class="feature-item-check">自定义提示词</li>
+                                <li class="feature-item-check">AI 提示词优化</li>
+                                <li class="feature-item-check">任务执行历史</li>
+                                <li class="feature-item-check">浏览器通知</li>
+                                <li class="feature-item-check">社区支持</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="/zh/signup.html" class="btn btn-outline btn-block">立即注册</a>
+                        </div>
+                    </div>
+
+                    <!-- Starter Plan -->
+                    <div class="pricing-card popular">
+                        <div class="pricing-badge">💰 超值</div>
+                        <div class="pricing-header">
+                            <h3 class="pricing-title">入门积分包</h3>
+                            <div class="pricing-price">¥15</div>
+                            <div class="pricing-period">一次性</div>
+                            <div class="pricing-original">原价 ¥30</div>
+                        </div>
+                        <div class="pricing-features">
+                            <p class="pricing-highlight">按需购买，灵活使用</p>
+                            <p class="pricing-note">🎉 早鸟价 5 折，恢复后 ¥30</p>
+                            <ul class="feature-list">
+                                <li class="feature-item-check">50 积分</li>
+                                <li class="feature-item-check">可执行 50 次任务</li>
+                                <li class="feature-item-check">永久有效</li>
+                                <li class="feature-item-check">支持微信/支付宝</li>
+                                <li class="feature-item-check">所有任务模板</li>
+                                <li class="feature-item-check">自定义提示词</li>
+                                <li class="feature-item-check">任务执行历史</li>
+                                <li class="feature-item-check">社区支持</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="https://trygrokai.asia/zh/pricing" class="btn btn-primary btn-block">立即购买</a>
+                        </div>
+                    </div>
+
+                    <!-- Standard Plan -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 class="pricing-title">标准积分包</h3>
+                            <div class="pricing-price">¥49</div>
+                            <div class="pricing-period">一次性</div>
+                            <div class="pricing-original">原价 ¥98</div>
+                        </div>
+                        <div class="pricing-features">
+                            <p class="pricing-highlight">按需购买，灵活使用</p>
+                            <p class="pricing-note">🎉 早鸟价 5 折，平均 ¥0.25/次</p>
+                            <ul class="feature-list">
+                                <li class="feature-item-check">200 积分</li>
+                                <li class="feature-item-check">可执行 200 次任务</li>
+                                <li class="feature-item-check">永久有效</li>
+                                <li class="feature-item-check">支持微信/支付宝</li>
+                                <li class="feature-item-check">所有任务模板</li>
+                                <li class="feature-item-check">自定义提示词</li>
+                                <li class="feature-item-check">任务执行历史</li>
+                                <li class="feature-item-check">邮件通知</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="https://trygrokai.asia/zh/pricing" class="btn btn-primary btn-block">立即购买</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section" id="faq">
+            <div class="container">
+                <h2 class="section-title">关于 Grok TaskPro 的常见问题</h2>
+                <p class="section-desc">还有其他问题？请随时联系我们。</p>
+
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Grok TaskPro 和传统 AI 助手有什么区别？</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron">
+                                <path d="m6 9 6 6 6-6"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>传统 AI 助手是被动的「你问我答」，需要你主动发起对话。Grok TaskPro 是主动的「定时汇报」，设置好任务后，AI 会在指定时间自动执行并把结果推送到邮箱，真正实现自动化工作流。</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>支持哪些实用场景？</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron">
+                                <path d="m6 9 6 6 6-6"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>支持内容创作（日报/周报生成）、市场研究（热点追踪/舆情监控）、投资分析（股市追踪/财务报告）、技术趋势（GitHub Trending/开发资讯）等多种场景。</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>如何设置定时任务？</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron">
+                                <path d="m6 9 6 6 6-6"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>创建任务时选择执行频率，支持预设时间（每天早上 9:00）或使用 Cron 表达式自定义。系统会按照设定的时间自动触发任务并将结果通知你。</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>邮件推送是如何工作的？</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron">
+                                <path d="m6 9 6 6 6-6"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>任务执行完成后，系统会自动将 AI 生成的内容发送到您绑定的邮箱。您也可以选择应用内通知或双渠道同时接收通知。</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>X 平台整合有什么优势？</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron">
+                                <path d="m6 9 6 6 6-6"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Grok 原生支持 X（原 Twitter）平台数据，可以实时追踪话题标签、监控特定用户账户、分析内容趋势、识别热点事件，为您提供最新的市场动向。</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>有使用配额限制吗？</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron">
+                                <path d="m6 9 6 6 6-6"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>免费版每天 3 次任务执行。购买积分包后，每 1 积分可执行 1 次任务，永久有效。您可以根据需要随时购买更多积分。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Showcase Section -->
+        <section class="showcase-section" id="showcase">
+            <div class="container">
+                <h2 class="section-title">探索任务执行展示</h2>
+                <p class="section-desc">查看 AI 自动生成的内容和执行历史，了解系统的强大能力</p>
+                <a href="/zh/showcase.html" class="btn btn-primary-link"><button>前往展示页</button></a>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="why-choose-section">
+            <div class="container">
+                <h2 class="section-title">为什么选择 Grok TaskPro？</h2>
+                <div class="why-choose-grid">
+                    <div class="why-choose-item">
+                        <div class="why-title">主动汇报</div>
+                        <div class="why-desc">信息找人，而非人找信息</div>
+                    </div>
+                    <div class="why-choose-item">
+                        <div class="why-title">邮件推送</div>
+                        <div class="why-desc">结果直达邮箱，随时随地查看</div>
+                    </div>
+                    <div class="why-choose-item">
+                        <div class="why-title">效率革命</div>
+                        <div class="why-desc">让 AI 在你睡觉时工作</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="16" fill="#1DA1F2"/>
+                        <path d="M16 8v16M10 14l6-6 6 6" stroke="white" stroke-width="2" stroke-cap="round"/>
+                    </svg>
+                    <span>Grok TaskPro</span>
+                    <p>专业的 AI 任务管理平台，使用最先进的 AI 技术，实现任务自动化和智能分析。</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-links-group">
+                        <h4 class="footer-links-title">产品</h4>
+                        <ul class="footer-links-list">
+                            <li><a href="/zh/grok-tasks.html">任务管理</a></li>
+                            <li><a href="/zh/showcase.html">任务展示</a></li>
+                            <li><a href="/zh/pricing.html">定价</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-links-group">
+                        <h4 class="footer-links-title">资源</h4>
+                        <ul class="footer-links-list">
+                            <li><a href="/zh/docs.html">文档</a></li>
+                            <li><a href="/zh/posts.html">博客</a></li>
+                            <li><a href="/zh/api-docs.html">API</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-links-group">
+                        <h4 class="footer-links-title">支持</h4>
+                        <ul class="footer-links-list">
+                            <li><a href="/zh/help.html">帮助中心</a></li>
+                            <li><a href="/zh/contact.html">联系我们</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 • Grok TaskPro 保留所有权利。</p>
+                <div class="footer-bottom-links">
+                    <a href="https://trygrokai.asia/privacy-policy">隐私政策</a>
+                    <span>|</span>
+                    <a href="https://trygrokai.asia/terms-of-service">服务条款</a>
+                    <span>|</span>
+                    <a href="https://trygrokai.asia/">🌐 官网：trygrokai.asia</a>
+                    <span>|</span>
+                    <a href="https://github.com/xianyu110/grok-task" target="_blank">GitHub</a>
+                    <span>|</span>
+                    <a href="https://x.com/Nikitka_aktikiN" target="_blank">Twitter</a>
+                    <span>|</span>
+                    <a href="https://link3.cc/maynorai" target="_blank">@maynorai</a>
+                </div>
+
+                <!-- Product Hunt Badge -->
+                <div class="footer-product-hunt">
+                    <a href="https://www.producthunt.com/products/grok-taskpro?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-grok-taskpro" target="_blank">
+                        <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1061294&theme=light&t=1768318187434" alt="Grok TaskPro - Product Hunt">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

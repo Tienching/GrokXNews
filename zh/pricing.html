@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="定价方案 - Grok TaskPro">
+    <title>定价方案 | Grok TaskPro</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="/zh" class="logo-link">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="16" fill="#1DA1F2"/>
+                        <path d="M16 8v16M10 14l6-6 6 6" stroke="white" stroke-width="2" stroke-cap="round"/>
+                    </svg>
+                    <span class="logo-text">Grok TaskPro</span>
+                </div>
+            </a>
+            <button class="menu-btn" aria-label="菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <!-- Navigation -->
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="/zh/grok-tasks.html" class="nav-link">任务管理</a></li>
+                    <li><a href="/zh#features" class="nav-link">功能介绍</a></li>
+                    <li><a href="/zh#pricing" class="nav-link">定价</a></li>
+                    <li><a href="/zh#faq" class="nav-link">常见问题</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Pricing Section -->
+        <section class="pricing-section">
+            <div class="container">
+                <h2 class="section-title">🎯 简单透明的定价</h2>
+                <p class="section-desc">选择适合您的套餐，随时可以取消</p>
+
+                <!-- Billing Toggle -->
+                <div class="billing-toggle">
+                    <label class="billing-option">
+                        <input type="radio" name="billing" value="one-time" checked />
+                        <span class="billing-label">
+                            <span class="billing-subtitle">一次性</span>
+                            <span class="billing-title">按需购买</span>
+                        </span>
+                    </label>
+                    <label class="billing-option">
+                        <input type="radio" name="billing" value="monthly" />
+                        <span class="billing-label">
+                            <span class="billing-subtitle">月付</span>
+                            <span class="billing-title">灵活</span>
+                        </span>
+                    </label>
+                    <label class="billing-option">
+                        <input type="radio" name="billing" value="quarterly" />
+                        <span class="billing-label">
+                            <span class="billing-subtitle">季付</span>
+                            <span class="billing-title">省 10%</span>
+                        </span>
+                    </label>
+                    <label class="billing-option">
+                        <input type="radio" name="billing" value="yearly" />
+                        <span class="billing-label">
+                            <span class="billing-subtitle">年付</span>
+                            <span class="billing-title">省 17%</span>
+                        </span>
+                    </label>
+                </div>
+
+                <!-- Pricing Cards -->
+                <div class="pricing-cards">
+                    <!-- Free Plan -->
+                    <div class="pricing-card free">
+                        <h3 class="plan-name">免费版</h3>
+                        <div class="plan-price">
+                            <span class="price-amount">¥0</span>
+                            <span class="price-period">永久免费</span>
+                        </div>
+                        <p class="plan-desc">体验核心功能</p>
+                        <ul class="plan-features">
+                            <li>每天 3 次任务执行</li>
+                            <li>每天 3 次 AI 问答</li>
+                            <li>所有任务模板</li>
+                            <li>自定义提示词</li>
+                            <li>AI 提示词优化</li>
+                            <li>任务执行历史</li>
+                            <li>浏览器通知</li>
+                            <li>社区支持</li>
+                        </ul>
+                        <p class="plan-target">适合轻度体验用户</p>
+                        <a href="/zh/signup.html" class="btn btn-outline"><button>立即注册</button></a>
+                    </div>
+
+                    <!-- Starter Plan -->
+                    <div class="pricing-card starter">
+                        <h3 class="plan-name">入门积分包</h3>
+                        <div class="plan-price">
+                            <span class="price-original">¥30</span>
+                            <span class="price-amount">¥15</span>
+                            <span class="price-period">一次性</span>
+                        </div>
+                        <p class="plan-desc">按需购买，灵活使用</p>
+                        <ul class="plan-features">
+                            <li><strong>50 积分</strong></li>
+                            <li>可执行 50 次任务</li>
+                            <li>永久有效</li>
+                            <li>支持微信/支付宝</li>
+                            <li>所有任务模板</li>
+                            <li>自定义提示词</li>
+                            <li>任务执行历史</li>
+                            <li>社区支持</li>
+                        </ul>
+                        <p class="plan-badge">🎉 早鸟价 5 折，恢复后 ¥30</p>
+                        <a href="#order-start" class="btn btn-primary"><button>立即购买</button></a>
+                    </div>
+
+                    <!-- Standard Plan -->
+                    <div class="pricing-card standard">
+                        <div class="plan-badge-top">💰 超值</div>
+                        <h3 class="plan-name">标准积分包</h3>
+                        <div class="plan-price">
+                            <span class="price-original">¥98</span>
+                            <span class="price-amount">¥49</span>
+                            <span class="price-period">一次性</span>
+                        </div>
+                        <p class="plan-desc">按需购买，灵活使用</p>
+                        <ul class="plan-features">
+                            <li><strong>200 积分</strong></li>
+                            <li>可执行 200 次任务</li>
+                            <li>永久有效</li>
+                            <li>支持微信/支付宝</li>
+                            <li>所有任务模板</li>
+                            <li>自定义提示词</li>
+                            <li>任务执行历史</li>
+                            <li>邮件通知</li>
+                            <li>社区支持</li>
+                        </ul>
+                        <p class="plan-badge">🎉 早鸟价 5 折，平均 ¥0.25/次</p>
+                        <a href="#order-standard" class="btn btn-primary"><button>立即购买</button></a>
+                    </div>
+
+                    <!-- Pro Plan -->
+                    <div class="pricing-card pro">
+                        <div class="plan-badge-top">🎁 最划算</div>
+                        <h3 class="plan-name">专业积分包</h3>
+                        <div class="plan-price">
+                            <span class="price-original">¥258</span>
+                            <span class="price-amount">¥129</span>
+                            <span class="price-period">一次性</span>
+                        </div>
+                        <p class="plan-desc">按需购买，灵活使用</p>
+                        <ul class="plan-features">
+                            <li><strong>600 积分</strong></li>
+                            <li>可执行 600 次任务</li>
+                            <li>永久有效</li>
+                            <li>支持微信/支付宝</li>
+                            <li>所有任务模板</li>
+                            <li>自定义提示词</li>
+                            <li>任务执行历史</li>
+                            <li>邮件通知</li>
+                            <li>优先处理队列</li>
+                            <li>邮件客服支持</li>
+                        </ul>
+                        <p class="plan-badge">🎉 早鸟价 5 折，平均 ¥0.22/次</p>
+                        <a href="#order-pro" class="btn btn-primary"><button>立即购买</button></a>
+                    </div>
+
+                    <!-- Enterprise Plan -->
+                    <div class="pricing-card enterprise">
+                        <h3 class="plan-name">企业版</h3>
+                        <div class="plan-price">
+                            <span class="price-amount">联系销售</span>
+                        </div>
+                        <p class="plan-desc">团队协作与定制服务</p>
+                        <div class="plan-addon">
+                            <p class="addon-title">Pro 版所有功能，另加</p>
+                            <ul class="plan-features">
+                                <li>✨ 无限次任务执行</li>
+                                <li>✨ 无限次 AI 问答</li>
+                                <li>团队协作功能</li>
+                                <li>API 访问权限</li>
+                                <li>白标定制服务</li>
+                                <li>商业使用授权</li>
+                                <li>1对1 专属支持</li>
+                                <li>SLA 服务保障</li>
+                            </ul>
+                        </div>
+                        <p class="plan-target">根据团队规模定制报价</p>
+                        <a href="#contact-sales" class="btn btn-outline"><button>联系我们</button></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="16" fill="#1DA1F2"/>
+                        <path d="M16 8v16M10 14l6-6 6 6" stroke="white" stroke-width="2" stroke-cap="round"/>
+                    </svg>
+                    <span>Grok TaskPro</span>
+                    <p>专业的 AI 任务管理平台，使用最先进的 AI 技术，实现任务自动化和智能分析。</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-links-group">
+                        <h4 class="footer-links-title">产品</h4>
+                        <ul class="footer-links-list">
+                            <li><a href="/zh/grok-tasks.html">任务管理</a></li>
+                            <li><a href="/zh/showcase.html">任务展示</a></li>
+                            <li><a href="/zh/pricing.html">定价</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-links-group">
+                        <h4 class="footer-links-title">资源</h4>
+                        <ul class="footer-links-list">
+                            <li><a href="/zh/docs.html">文档</a></li>
+                            <li><a href="/zh/posts.html">博客</a></li>
+                            <li><a href="/zh/api-docs.html">API</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-links-group">
+                        <h4 class="footer-links-title">支持</h4>
+                        <ul class="footer-links-list">
+                            <li><a href="/zh/help.html">帮助中心</a></li>
+                            <li><a href="/zh/contact.html">联系我们</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 • Grok TaskPro 保留所有权利。</p>
+                <div class="footer-bottom-links">
+                    <a href="https://trygrokai.asia/privacy-policy">隐私政策</a>
+                    <span>|</span>
+                    <a href="https://trygrokai.asia/terms-of-service">服务条款</a>
+                    <span>|</span>
+                    <a href="https://trygrokai.asia/">🌐 官网：trygrokai.asia</a>
+                    <span>|</span>
+                    <a href="https://github.com/xianyu110/grok-task" target="_blank">GitHub</a>
+                    <span>|</span>
+                    <a href="https://x.com/Nikitka_aktikiN" target="_blank">Twitter</a>
+                    <span>|</span>
+                    <a href="https://link3.cc/maynorai" target="_blank">@maynorai</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
