@@ -114,7 +114,7 @@
                 <form class="auth-form" id="signinForm">
                     <div class="form-group">
                         <label for="email">电子邮箱</label>
-                        <input type="text" id="email" placeholder="name@example.com" required>
+                        <input type="email" id="email" placeholder="name@example.com" required>
                     </div>
 
                     <div class="form-group">
@@ -133,7 +133,7 @@
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
                         </svg>
-                        使用 GitHub 登录
+                        使用 Github 登录
                     </button>
                     <button class="btn btn-social">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -154,16 +154,41 @@
     <script>
         document.getElementById('signinForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            const email = document.getElementById('email').value;
+            const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
 
-            if(email && password) {
-                // Simulate login
-                alert('登录成功！正在跳转...');
-                setTimeout(() => {
-                    window.location.href = '/zh/grok-tasks.html';
-                }, 1000);
+            if (!email || !password) {
+                alert('请填写邮箱和密码');
+                return;
             }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('请输入有效的邮箱地址');
+                return;
+            }
+
+            if (password.length < 8) {
+                alert('密码长度至少为 8 位');
+                return;
+            }
+
+            // Check if user is registered (localStorage)
+            const users = JSON.parse(localStorage.getItem('grokx_users') || '{}');
+            if (!users[email]) {
+                alert('该邮箱尚未注册，请先注册账号');
+                return;
+            }
+            if (users[email] !== password) {
+                alert('邮箱或密码错误，请重试');
+                return;
+            }
+
+            alert('登录成功！正在跳转...');
+            localStorage.setItem('grokx_current_user', email);
+            setTimeout(() => {
+                window.location.href = '/zh/grok-tasks.html';
+            }, 1000);
         });
     </script>
 </body>
