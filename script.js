@@ -399,4 +399,4 @@ document.querySelectorAll('.features, .why-choose, .pricing, .faq').forEach(sect
     observer.observe(section);
 });
 
-console.log('Grok TaskPro - JavaScript initialized');
+console.log('GrokXNews - JavaScript initialized');

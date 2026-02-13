@@ -1,10 +1,10 @@
-# Grok TaskPro
+# GrokXNews
 
 AI-driven intelligent task automation platform. Let AI proactively track hotspots and deliver organized information to you -- shifting from "you ask, I answer" to "proactive reporting."
 
 ## Overview
 
-Grok TaskPro is a web-based platform that leverages Grok AI to automate recurring tasks such as news monitoring, trend analysis, content curation, and more. Users can create scheduled tasks with custom prompts, and results are automatically delivered via email or in-app notifications.
+GrokXNews is a web-based platform that leverages Grok AI to automate recurring tasks such as news monitoring, trend analysis, content curation, and more. Users can create scheduled tasks with custom prompts, and results are automatically delivered via email or in-app notifications.
 
 ### Key Features
 
@@ -82,9 +82,9 @@ GrokXNews/
 ## Links
 
 - Website: [trygrokai.asia](https://trygrokai.asia)
-- Product Hunt: [Grok TaskPro](https://www.producthunt.com/products/grok-taskpro)
+- Product Hunt: [GrokXNews](https://www.producthunt.com/products/grok-taskpro)
 - Twitter: [@Nikitka_aktikiN](https://x.com/Nikitka_aktikiN)
 
 ## License
 
-All rights reserved. (c) 2025 Grok TaskPro.
+All rights reserved. (c) 2025 GrokXNews.
