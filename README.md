@@ -81,7 +81,7 @@ GrokXNews/
 
 ## Links
 
-- Website: [trygrokai.asia](https://trygrokai.asia)
+- Website: [grokx.news](https://grokx.news)
 - Product Hunt: [GrokXNews](https://www.producthunt.com/products/grok-taskpro)
 - Twitter: [@Nikitka_aktikiN](https://x.com/Nikitka_aktikiN)
 

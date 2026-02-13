@@ -120,9 +120,15 @@ function createTaskRow(task) {
 
     // Add event listeners to new buttons
     const execBtn = div.querySelector('.btn-execute');
-    if (execBtn) {
-        execBtn.addEventListener('click', handleExecuteTask);
-    }
+    if (execBtn) execBtn.addEventListener('click', handleExecuteTask);
+    const editBtn = div.querySelector('.btn-edit');
+    if (editBtn) editBtn.addEventListener('click', handleEditTask);
+    const histBtn = div.querySelector('.btn-history');
+    if (histBtn) histBtn.addEventListener('click', handleHistoryTask);
+    const shareBtn = div.querySelector('.btn-share');
+    if (shareBtn) shareBtn.addEventListener('click', handleShareTask);
+    const moreBtn = div.querySelector('.btn-more');
+    if (moreBtn) moreBtn.addEventListener('click', handleMoreTask);
 
     return div;
 }
@@ -307,50 +313,80 @@ if (showcaseLoading && showcaseGrid) {
 }
 
 
-const editButtons = document.querySelectorAll('.btn-edit');
+function handleEditTask(e) {
+    e.preventDefault();
+    const row = e.currentTarget.closest('.task-row');
+    const title = row?.querySelector('.task-name')?.textContent || '未知任务';
+    console.log('编辑任务:', title);
+    alert(`编辑功能开发中...\n任务：${title}`);
+}
 
-editButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const card = btn.closest('.task-card');
-        const title = card?.querySelector('.task-title')?.textContent;
-        console.log('编辑任务:', title);
-        alert('编辑功能开发中...');
-    });
+function handleHistoryTask(e) {
+    e.preventDefault();
+    const row = e.currentTarget.closest('.task-row');
+    const title = row?.querySelector('.task-name')?.textContent || '未知任务';
+    console.log('查看历史:', title);
+    alert(`历史记录功能开发中...\n任务：${title}`);
+}
+
+function handleShareTask(e) {
+    e.preventDefault();
+    const row = e.currentTarget.closest('.task-row');
+    const title = row?.querySelector('.task-name')?.textContent || '未知任务';
+    console.log('分享任务:', title);
+    alert(`分享功能开发中...\n任务：${title}`);
+}
+
+function handleMoreTask(e) {
+    e.preventDefault();
+    const row = e.currentTarget.closest('.task-row');
+    const title = row?.querySelector('.task-name')?.textContent || '未知任务';
+    console.log('更多操作:', title);
+    alert(`更多操作开发中...\n任务：${title}`);
+}
+
+document.querySelectorAll('.btn-edit').forEach(btn => {
+    btn.addEventListener('click', handleEditTask);
 });
 
-const historyButtons = document.querySelectorAll('.btn-history');
-
-historyButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const card = btn.closest('.task-card');
-        const title = card?.querySelector('.task-title')?.textContent;
-        console.log('查看历史:', title);
-        alert('历史记录功能开发中...');
-    });
+document.querySelectorAll('.btn-history').forEach(btn => {
+    btn.addEventListener('click', handleHistoryTask);
 });
 
-/**** Pagination ****/
-const pageButtons = document.querySelectorAll('.page-btn:not(.disabled)');
+document.querySelectorAll('.btn-share').forEach(btn => {
+    btn.addEventListener('click', handleShareTask);
+});
 
-pageButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const pageBtn = e.target.closest('.page-btn');
-        if (!pageBtn.classList.contains('disabled')) {
-            const page = pageBtn.dataset.page;
-            console.log('切换到第', page, '页');
-            // Pagination logic would go here
-        }
-    });
+document.querySelectorAll('.btn-more').forEach(btn => {
+    btn.addEventListener('click', handleMoreTask);
 });
 
 /**** Smooth scroll for navigation links ****/
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+
+        // Handle bare "#" placeholder links
+        if (href === '#') {
+            e.preventDefault();
+            alert('该功能正在开发中，敬请期待！');
+            return;
+        }
+
+        // Handle pricing anchor links (no matching target on page)
+        if (href.startsWith('#order-') || href === '#contact-sales') {
+            e.preventDefault();
+            if (href === '#contact-sales') {
+                window.location.href = '/zh/contact.html';
+            } else {
+                alert('购买功能即将上线，敬请期待！\n您也可以访问 grokx.news 进行购买。');
+            }
+            return;
+        }
+
+        // Normal smooth scroll for valid section anchors
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const target = document.querySelector(href);
         if (target) {
             target.scrollIntoView({
                 behavior: 'smooth',
@@ -392,6 +428,153 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 }, observerOptions);
+
+/**** Toolbar Buttons ****/
+const refreshBtn = document.getElementById('refreshBtn');
+if (refreshBtn) {
+    refreshBtn.addEventListener('click', () => {
+        refreshBtn.textContent = '刷新中...';
+        refreshBtn.disabled = true;
+        setTimeout(() => {
+            refreshBtn.textContent = '刷新任务列表';
+            refreshBtn.disabled = false;
+            alert('任务列表已刷新');
+        }, 800);
+    });
+}
+
+const notificationBtn = document.getElementById('notificationBtn');
+if (notificationBtn) {
+    notificationBtn.addEventListener('click', () => {
+        alert('通知设置功能开发中...');
+    });
+}
+
+/**** Form Bottom Actions ****/
+document.querySelectorAll('.form-bottom-actions .btn').forEach(btn => {
+    const text = btn.textContent.trim();
+    if (text === '使用模板') {
+        btn.addEventListener('click', () => {
+            alert('任务模板功能开发中...\n即将推出丰富的预设模板，敬请期待！');
+        });
+    } else if (text === '高级选项') {
+        btn.addEventListener('click', () => {
+            alert('高级选项功能开发中...\n即将支持自定义 Cron 表达式、多邮箱推送等高级功能。');
+        });
+    }
+});
+
+/**** AI Optimize Button ****/
+if (optimizeBtn) {
+    optimizeBtn.addEventListener('click', () => {
+        if (!taskPromptInput || taskPromptInput.value.trim().length === 0) return;
+        const originalText = optimizeBtn.textContent;
+        optimizeBtn.textContent = '优化中...';
+        optimizeBtn.disabled = true;
+        setTimeout(() => {
+            optimizeBtn.textContent = originalText;
+            optimizeBtn.disabled = false;
+            alert('AI 提示词优化功能开发中...\n即将接入 Grok AI 优化您的提示词。');
+        }, 1000);
+    });
+}
+
+/**** Select All Tasks ****/
+const selectAllCheckbox = document.getElementById('selectAllTasks');
+if (selectAllCheckbox) {
+    selectAllCheckbox.addEventListener('change', (e) => {
+        const checked = e.target.checked;
+        document.querySelectorAll('.task-checkbox-input').forEach(cb => {
+            cb.checked = checked;
+        });
+    });
+}
+
+/**** Search Box ****/
+const taskSearchInput = document.getElementById('taskSearch');
+if (taskSearchInput) {
+    taskSearchInput.addEventListener('input', (e) => {
+        const keyword = e.target.value.trim().toLowerCase();
+        document.querySelectorAll('.task-row').forEach(row => {
+            const name = row.querySelector('.task-name')?.textContent.toLowerCase() || '';
+            const desc = row.querySelector('.task-desc')?.textContent.toLowerCase() || '';
+            if (keyword === '' || name.includes(keyword) || desc.includes(keyword)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+}
+
+/**** Filter Selects ****/
+const statusFilter = document.getElementById('statusFilter');
+if (statusFilter) {
+    statusFilter.addEventListener('change', (e) => {
+        const val = e.target.value;
+        document.querySelectorAll('.task-row').forEach(row => {
+            const statusEl = row.querySelector('.task-status');
+            if (!val) {
+                row.style.display = '';
+                return;
+            }
+            if (statusEl && statusEl.classList.contains(val)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+}
+
+const sortFilter = document.getElementById('sortFilter');
+if (sortFilter) {
+    sortFilter.addEventListener('change', (e) => {
+        const val = e.target.value;
+        const taskList = document.querySelector('.task-list');
+        if (!taskList) return;
+        const rows = Array.from(taskList.querySelectorAll('.task-row'));
+        rows.sort((a, b) => {
+            if (val === 'name') {
+                const nameA = a.querySelector('.task-name')?.textContent || '';
+                const nameB = b.querySelector('.task-name')?.textContent || '';
+                return nameA.localeCompare(nameB, 'zh');
+            }
+            if (val === 'schedule') {
+                const cronA = a.querySelector('.task-cron')?.textContent || '';
+                const cronB = b.querySelector('.task-cron')?.textContent || '';
+                return cronA.localeCompare(cronB);
+            }
+            return 0;
+        });
+        rows.forEach(row => taskList.appendChild(row));
+    });
+}
+
+/**** Pagination Buttons ****/
+const prevPageBtn = document.getElementById('prevPage');
+const nextPageBtn = document.getElementById('nextPage');
+
+if (prevPageBtn) {
+    prevPageBtn.addEventListener('click', () => {
+        if (prevPageBtn.disabled) return;
+        alert('上一页功能开发中...');
+    });
+}
+
+if (nextPageBtn) {
+    nextPageBtn.addEventListener('click', () => {
+        if (nextPageBtn.disabled) return;
+        alert('下一页功能开发中...');
+    });
+}
+
+const itemsPerPageSelect = document.getElementById('itemsPerPage');
+if (itemsPerPageSelect) {
+    itemsPerPageSelect.addEventListener('change', (e) => {
+        console.log('每页显示:', e.target.value, '条');
+    });
+}
 
 // Observe sections for animation
 document.querySelectorAll('.features, .why-choose, .pricing, .faq').forEach(section => {
