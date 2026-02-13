@@ -149,7 +149,15 @@
 
     <script src="../script.js"></script>
     <script>
-        document.getElementById('signupForm').addEventListener('submit', (e) => {
+        async function hashPassword(password) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(password);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
@@ -177,8 +185,9 @@
                 return;
             }
 
-            // Save user
-            users[email] = password;
+            // Hash password before storing
+            const hashedPassword = await hashPassword(password);
+            users[email] = hashedPassword;
             localStorage.setItem('grokx_users', JSON.stringify(users));
             localStorage.setItem('grokx_current_user', email);
 

@@ -152,7 +152,15 @@
 
     <script src="../script.js"></script>
     <script>
-        document.getElementById('signinForm').addEventListener('submit', (e) => {
+        async function hashPassword(password) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(password);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        document.getElementById('signinForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
@@ -179,7 +187,10 @@
                 alert('该邮箱尚未注册，请先注册账号');
                 return;
             }
-            if (users[email] !== password) {
+
+            // Hash input password and compare with stored hash
+            const hashedPassword = await hashPassword(password);
+            if (users[email] !== hashedPassword) {
                 alert('邮箱或密码错误，请重试');
                 return;
             }
