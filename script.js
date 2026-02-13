@@ -576,6 +576,20 @@ if (itemsPerPageSelect) {
     });
 }
 
+/**** Social Login Buttons ****/
+document.querySelectorAll('.btn-social').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const text = btn.textContent.trim();
+        if (text.includes('GitHub')) {
+            alert('GitHub 登录/注册功能即将上线，敬请期待！');
+        } else if (text.includes('Google')) {
+            alert('Google 登录/注册功能即将上线，敬请期待！');
+        } else {
+            alert('第三方登录功能即将上线，敬请期待！');
+        }
+    });
+});
+
 // Observe sections for animation
 document.querySelectorAll('.features, .why-choose, .pricing, .faq').forEach(section => {
     section.classList.add('fade-in');
