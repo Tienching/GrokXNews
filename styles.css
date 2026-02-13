@@ -295,6 +295,32 @@ a:hover {
     color: var(--primary-color);
 }
 
+/* ===== Header Auth Buttons ===== */
+.header-auth {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: 24px;
+}
+
+.btn-login {
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-decoration: none;
+}
+
+.btn-login:hover {
+    background-color: var(--primary-dark);
+    color: white;
+}
+
 /* ===== Hero Section ===== */
 .hero {
     padding-top: calc(var(--header-height) + 60px);
@@ -1748,6 +1774,10 @@ a:hover {
 
     .nav.active {
         display: block;
+    }
+
+    .header-auth {
+        margin-left: 0;
     }
 
     .nav-list {
